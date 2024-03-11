@@ -1,13 +1,17 @@
-body {
-  padding: 0;
-  margin: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  @apply select-none;
 }
-#root {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@font-face {
+  font-family: "deathStar";
+  src: url("../public/fonts/Death_Star.otf");
+}
+@font-face {
+  font-family: "dumbledor";
+  src: url("../public/fonts/dum1.ttf");
+}
+.active {
+  @apply bg-violet-950 text-white rounded-md p-2;
 }

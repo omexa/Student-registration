@@ -1,21 +1,43 @@
-import React from "react";
-import reactLogo from "./assets/react.svg";
+import React, { Children } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
 import Nav from "./Nav";
 import Register from "./RegistrationPage";
-import Home from "./Home";
+import StudList from "./StudList";
+import HomeLayout from "./HomeLayout";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/home" element={<Home />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-      </Routes>
-    </BrowserRouter>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "",
+      element: <Layout />,
+      children: [
+        { path: "", element: <HomeLayout /> },
+        { path: "home", element: <HomeLayout /> },
+        { path: "register", element: <Register /> },
+        { path: "studs", element: <StudList /> },
+        { path: "about", element: "" },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }
 export default App;
+
+function Layout() {
+  return (
+    <div className="h-screen grid grid-rows-[auto_1fr]">
+      <Nav />
+      <div className="bg-white grid ">
+        <Outlet />
+      </div>
+    </div>
+  );
+}

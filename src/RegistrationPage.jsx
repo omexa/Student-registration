@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./registrationPage.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export default function Register() {
@@ -26,71 +25,85 @@ export default function Register() {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="reg-box">
-      <p className="head">REGISTRATION</p>
-      <form onSubmit={handleSubmit}>
-        <div className="input-div">
-          <label>Name:</label>
-          <input
-            type="text"
-            placeholder="name"
-            name="name"
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="input-div-sex">
-          <label>Gender:</label>
-          <label>
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="bg-violet-500 rounded-md w-max mt-5 flex flex-col items-center justify-center py-20 px-10">
+        <p className="text-3xl font-[deathStar] ">REGISTRATION</p>
+        <form onSubmit={handleSubmit} className="mt-8">
+          <div className="flex flex-col">
+            <label className="font-medium">Name</label>
             <input
-              type="radio"
-              value="male"
-              name="gender"
-              placeholder="sex"
-              checked={sex === "male"}
-              onChange={(e) => setSex(e.target.value)}
+              type="text"
+              placeholder="name"
+              name="name"
+              onChange={(e) => setName(e.target.value)}
               required
+              className="p-2 font-bold rounded-md w-full"
             />
-            male
-          </label>
-          <label>
+          </div>
+          <div className="flex flex-col">
+            <label className="font-medium">Gender:</label>
+            <div className="font-medium ml-4 flex items-center justify-center">
+              <label>
+                <input
+                  type="radio"
+                  value="male"
+                  name="gender"
+                  placeholder="sex"
+                  checked={sex === "male"}
+                  onChange={(e) => setSex(e.target.value)}
+                  required
+                  className="w-5 h-5"
+                />
+                male
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  placeholder="sex"
+                  checked={sex === "female"}
+                  onChange={(e) => setSex(e.target.value)}
+                  required
+                  className="w-5 h-5 ml-5"
+                />
+                female
+              </label>
+            </div>
+          </div>
+          <div>
+            <label className="font-medium">Age:</label>
             <input
-              type="radio"
-              name="gender"
-              value="female"
-              placeholder="sex"
-              checked={sex === "female"}
-              onChange={(e) => setSex(e.target.value)}
+              type="number"
+              min="18"
+              max="40"
+              name="age"
+              placeholder="age"
+              onChange={(e) => setAge(e.target.value)}
               required
+              className="p-2 rounded-xl w-full"
             />
-            female
-          </label>
-        </div>
-        <div className="input-div">
-          <label>Age:</label>
-          <input
-            type="number"
-            min="18"
-            max="40"
-            name="age"
-            placeholder="age"
-            onChange={(e) => setAge(e.target.value)}
-            required
-          />
-        </div>
-        <div className="input-div">
-          <label>phone:</label>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="phone number"
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">SUBMIT</button>
-      </form>
-      <p id="option">{registerd}</p>
+          </div>
+          <div className="flex flex-col">
+            <label className="font-medium">phone:</label>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="phone number"
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              className="p-2 rounded-xl w-full"
+            />
+          </div>
+          <button
+            type="submit"
+            className="active:scale-[0.96] bg-slate-600 mt-5 w-full p-2 font-semibold border-spacing-2 rounded-md text-white"
+          >
+            SUBMIT
+          </button>
+        </form>
+        <p id="option">{registerd}</p>
+      </div>
     </div>
   );
 }

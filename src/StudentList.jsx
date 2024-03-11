@@ -8,40 +8,13 @@ export default function StudentList() {
       .then((result) => setStuds(result.data))
       .catch((err) => console.log(err));
   }, []);
-  const rowStyle = {
-    color: "white",
-    fontFamily: "arial",
-  };
-  const femleStyle = {
-    backgroundColor: "green",
-    fontFamily: "fantasy",
-    fontSize: "20px",
-    color: "white",
-  };
+
   return (
     <div>
-      <h1
-        style={{
-          color: "black",
-          fontFamily: "fantasy",
-          backgroundColor: "green",
-          borderRadius: 3,
-          padding: 5,
-        }}
-      >
-        here registered female students only students display
-      </h1>
-      <table
-        border={2}
-        cellPadding={2}
-        cellSpacing={2}
-        style={{
-          background: "brown",
-          width: "100%",
-        }}
-      >
+      <h1>here registered female students only students display</h1>
+      <table>
         <thead>
-          <tr style={rowStyle}>
+          <tr>
             <td>NAME</td>
             <td>SEX</td>
             <td>AGE</td>
@@ -52,7 +25,7 @@ export default function StudentList() {
           {studs.map((stud, index) => {
             if (stud.sex === "female") {
               return (
-                <tr style={femleStyle} key={index}>
+                <tr key={index}>
                   <td>{stud.name}</td>
                   <td>{stud.sex}</td>
                   <td>{stud.age}</td>

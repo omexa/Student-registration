@@ -1,16 +1,18 @@
 import React from "react";
-import "./nav.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 export default function Nav() {
   return (
-    <div className="nav-bar">
-      <span>OMAR TRAIN</span>
-      <div className="nav-items">
-        <NavLink to="/home" className="">
+    <div className="sticky top-0 font-mono w-full p-4 bg-violet-200 shadow flex justify-between items-center text-violet-600">
+      <span className="max-md:hidden font-semibold text-2xl">OMAR TRAIN</span>
+      <div className="font-medium">
+        <NavLink to="/home" className="mr-5">
           HOME
         </NavLink>
-        <NavLink to="/register" className="">
+        <NavLink to="/register" className="mr-5">
           REGISTER
+        </NavLink>
+        <NavLink to="/studs" className="mr-5">
+          USERS
         </NavLink>
         <NavLink to="/about" className="">
           ABOUT
